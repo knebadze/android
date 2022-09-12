@@ -30,12 +30,10 @@
 
                   <div class="card-tools">
                     <div class="input-group input-group-sm" style="width: 150px;">
-                      <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
-
                       <div class="input-group-append">
-                        <button type="submit" class="btn btn-default">
-                          <i class="fas fa-search"></i>
-                        </button>
+                        <button type="button" class="btn btn-success rounded" data-toggle="modal" data-target="#modal-default-permission">
+                            <i class="fas fa-plus mr-1"></i> დაამატება
+                          </button>
                       </div>
                     </div>
                   </div>
@@ -47,6 +45,7 @@
                       <tr>
                         <th>ID</th>
                         <th>Name</th>
+                        <th>Action</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -54,6 +53,10 @@
                         <tr>
                             <td>{{$permission->id}}</td>
                             <td>{{$permission->name}}</td>
+                            <td>
+                                <a href=""> <i class="nav-icon fas fa-pen"></i>Edit /</a>
+                                <a href=""> <i class="nav-icon fas fa-trash"></i> Delete</a>
+                            </td>
                           </tr>
                         @endforeach
                     </tbody>

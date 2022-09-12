@@ -33,6 +33,18 @@
   <link rel="stylesheet" href="{{asset('plugins/daterangepicker/daterangepicker.css')}}">
   <!-- summernote -->
   <link rel="stylesheet" href="{{asset('plugins/summernote/summernote-bs4.min.css')}}">
+
+  <style>
+   td .edit{
+    text-decoration: none;
+    color: #000080;
+   }
+   td .delete{
+    text-decoration: none;
+    color: #800000;
+   }
+  </style>
+
     </head>
     <body class="hold-transition sidebar-mini layout-fixed">
         <div class="wrapper">
@@ -45,9 +57,25 @@
         </div>
         <!-- /.content-wrapper -->
             @include('inc.admin_footer')
-        </div>
+            @include('inc.role_create_modal')
+            @include('inc.permission_create_modal')
 
-        <!-- jQuery -->
+
+
+<!-- jQuery -->
+<script src="{{asset('plugins/jquery/jquery.min.js')}}"></script>
+<!-- Bootstrap 4 -->
+<script src="{{asset('plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+<!-- SweetAlert2 -->
+<script src="{{asset('plugins/sweetalert2/sweetalert2.min.js')}}"></script>
+<!-- Toastr -->
+<script src="{{asset('plugins/toastr/toastr.min.js')}}"></script>
+<!-- AdminLTE App -->
+<script src="{{asset('dist/js/adminlte.min.js')}}"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="{{asset('dist/js/demo.js')}}"></script>
+
+        {{-- <!-- jQuery -->
 <script src="plugins/jquery/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
 <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
@@ -80,6 +108,8 @@
 <!-- AdminLTE for demo purposes -->
 <script src="{{asset('dist/js/demo.js')}}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="{{asset('dist/js/pages/dashboard.js')}}"></script>
+<script src="{{asset('dist/js/pages/dashboard.js')}}"></script> --}}
+
+
     </body>
 </html>

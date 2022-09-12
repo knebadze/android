@@ -8,9 +8,17 @@ use App\Http\Controllers\Controller;
 
 class RoleController extends Controller
 {
-    public function index(){
-
+    public function index()
+    {
         $roles = Role::all();
         return view('admin.roles.index', compact('roles'));
+    }
+
+    public function store(Request $request)
+    {
+        $validated = $request->validate(['name' => ['required', 'min:3']]);
+        Role::create($validated);
+
+        return to_route('admin.roles.index');
     }
 }

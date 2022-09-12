@@ -30,14 +30,16 @@
 
               <div class="card-tools">
                 <div class="input-group input-group-sm" style="width: 150px;">
-                  <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
-
-                  <div class="input-group-append">
-                    <button type="submit" class="btn btn-default">
-                      <i class="fas fa-search"></i>
-                    </button>
+                    <div class="input-group-append">
+                      {{-- <a  class=" p-3 bg-success bg-gradient rounded text-white">
+                          <i class="fas fa-plus mr-1"></i> დაამატება
+                      </a> --}}
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-success rounded" data-toggle="modal" data-target="#modal-default">
+                        <i class="fas fa-plus mr-1"></i> დაამატება
+                      </button>
+                    </div>
                   </div>
-                </div>
               </div>
             </div>
             <!-- /.card-header -->
@@ -47,6 +49,7 @@
                   <tr>
                     <th>ID</th>
                     <th>Name</th>
+                    <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -54,6 +57,10 @@
                     <tr>
                         <td>{{$role->id}}</td>
                         <td>{{$role->name}}</td>
+                        <td>
+                            <a class="edit" href=""> <i class="nav-icon fas fa-pen"></i>Edit /</a>
+                            <a class="delete" href=""> <i class="nav-icon fas fa-trash"></i> Delete</a>
+                        </td>
                       </tr>
                     @endforeach
                 </tbody>
@@ -68,4 +75,5 @@
     </div><!-- /.container-fluid -->
   </section>
   <!-- /.content -->
+
 </x-admin-layout>
