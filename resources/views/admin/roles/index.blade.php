@@ -20,13 +20,18 @@
   <!-- Main content -->
   <section class="content">
     <div class="container-fluid">
+        @if (Session::has('message'))
+        <div class="alert alert-success" role="alert">
+            {{Session::get('message')}}!
+          </div>
+        @endif
 
 
       <div class="row">
         <div class="col-12">
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Fixed Header Table</h3>
+              <h3 class="card-title">როლების ცხრილი</h3>
 
               <div class="card-tools">
                 <div class="input-group input-group-sm" style="width: 150px;">
@@ -58,8 +63,15 @@
                         <td>{{$role->id}}</td>
                         <td>{{$role->name}}</td>
                         <td>
-                            <a class="edit" href=""> <i class="nav-icon fas fa-pen"></i>Edit /</a>
-                            <a class="delete" href=""> <i class="nav-icon fas fa-trash"></i> Delete</a>
+                            <div class="flex flex-d">
+                            <a href="{{route('admin.roles.edit', $role->id)}}" class="edit p-1 text-white bg-success rounded"> <i class="nav-icon fas fa-pen"></i>Edit</a>
+                            <form class="ml-1" method="POST" action="{{route('admin.roles.destroy', $role->id)}}"
+                                onsubmit="return confirm('ნამდვილად გსურთ წაშლა');">
+                                @csrf
+                                @method('DELETE')
+                                <button class="p-1 text-white bg-danger rounded" type="submit"><i class="nav-icon fas fa-trash"></i> წაშლა</button>
+                            </form>
+                        </div>
                         </td>
                       </tr>
                     @endforeach

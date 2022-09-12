@@ -3,6 +3,11 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <div class="container-fluid">
+            @if (Session::has('message'))
+            <div class="alert alert-success" role="alert">
+                {{Session::get('message')}}!
+              </div>
+            @endif
           <div class="row mb-2">
             <div class="col-sm-6">
               <h1>Simple Tables</h1>
@@ -54,8 +59,15 @@
                             <td>{{$permission->id}}</td>
                             <td>{{$permission->name}}</td>
                             <td>
-                                <a href=""> <i class="nav-icon fas fa-pen"></i>Edit /</a>
-                                <a href=""> <i class="nav-icon fas fa-trash"></i> Delete</a>
+                                <div class="flex flex-d">
+                                    <a href="{{route('admin.permissions.edit', $permission->id)}}" class="edit p-1 text-white bg-success rounded"> <i class="nav-icon fas fa-pen"></i>Edit</a>
+                                    <form class="ml-1" method="POST" action="{{route('admin.permissions.destroy', $permission->id)}}"
+                                        onsubmit="return confirm('ნამდვილად გსურთ წაშლა');">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="p-1 text-white bg-danger rounded" type="submit"><i class="nav-icon fas fa-trash"></i> წაშლა</button>
+                                    </form>
+                                </div>
                             </td>
                           </tr>
                         @endforeach

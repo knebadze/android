@@ -37,7 +37,6 @@
   <style>
    td .edit{
     text-decoration: none;
-    color: #000080;
    }
    td .delete{
     text-decoration: none;
