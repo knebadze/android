@@ -10,4 +10,7 @@ class PageController extends Controller
     public function index(){
         return view('observer.index');
     }
+    public function map(){
+        return view('observer.map');
+    }
 }

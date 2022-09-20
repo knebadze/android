@@ -174,7 +174,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item menu-open">
-            <a href="{{route('admin.index')}}" class="nav-link active">
+            <a href="{{route('observer.index')}}" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -203,20 +203,14 @@
             </ul> --}}
           </li>
           <li class="nav-item">
-            <a href="{{route('admin.roles.index')}}" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
+            <a href="{{route('observer.map')}}" class="nav-link">
+              <i class="nav-icon fas fa-map"></i>
               <p>
-                Role
+                Map
               </p>
             </a>
           </li>
-          <li class="nav-item">
-            {{-- <x-admin-link :href="{{route('admin.permissions.index')}}" :active="request()->routeIs('admin.permissions.index')">
-                <i class="nav-icon fas fa-th"></i>
-                <p>
-                  Permission
-                </p>
-            </x-admin-link> --}}
+          {{-- <li class="nav-item">
             <a href="{{route('admin.permissions.index')}}" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
@@ -231,7 +225,7 @@
                 Users
               </p>
             </a>
-          </li>
+          </li> --}}
           {{-- <li class="nav-item">
             <x-responsive-nav-link :href="{{route('admin.users.index')}}" :active="request()->routeIs('admin.users.indexd')">
                 <i class="nav-icon fas fa-user"></i>

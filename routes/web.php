@@ -56,6 +56,8 @@ Route::middleware(['auth', 'role:admin'])->name('admin.')->prefix('admin')->grou
 
 Route::middleware(['auth', 'role:observer'])->group(function(){
     Route::get('observer/index',[PageController::class, 'index'])->name('observer.index');
+    Route::get('observer/map',[PageController::class, 'map'])->name('observer.map');
 });
+
 
 require __DIR__.'/auth.php';

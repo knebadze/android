@@ -173,7 +173,7 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item menu-open">
+          <li class="nav-item menu-open ">
             <a href="{{route('admin.index')}}" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
@@ -211,12 +211,6 @@
             </a>
           </li>
           <li class="nav-item">
-            {{-- <x-admin-link :href="{{route('admin.permissions.index')}}" :active="request()->routeIs('admin.permissions.index')">
-                <i class="nav-icon fas fa-th"></i>
-                <p>
-                  Permission
-                </p>
-            </x-admin-link> --}}
             <a href="{{route('admin.permissions.index')}}" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
@@ -224,7 +218,7 @@
               </p>
             </a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item {{ (request()->is('admin/users/index')) ? 'active' : '' }}">
             <a href="{{route('admin.users.index')}}" class="nav-link">
               <i class="nav-icon fas fa-user"></i>
               <p>
@@ -232,14 +226,6 @@
               </p>
             </a>
           </li>
-          {{-- <li class="nav-item">
-            <x-responsive-nav-link :href="{{route('admin.users.index')}}" :active="request()->routeIs('admin.users.indexd')">
-                <i class="nav-icon fas fa-user"></i>
-              <p>
-                {{ __('Users') }}
-              </p>
-            </x-responsive-nav-link>
-          </li> --}}
           {{-- <li class="nav-item">
             <a href="pages/widgets.html" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
