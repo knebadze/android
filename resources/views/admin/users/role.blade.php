@@ -23,15 +23,22 @@
         <div class="row">
             <!-- left column -->
             <div class="col-md-12">
-                <div>იუზერის სახელი: {{$user->name}}</div>
-                <div>იუზერის ემაილ: {{$user->email}}</div>
+                <div class="card card-info">
+                    <div class="card-header">
+                        <h3 class="card-title">იუზერის ინფორმაცია</h3>
+                    </div>
+                    <div class="my-4 ml-3 ">
+                    <div>იუზერის სახელი: {{$user->name}}</div>
+                    <div >იუზერის ემაილ: {{$user->email}}</div>
+                    </div>
+                </div>
               <!-- /.card -->
             </div><!--/col-md-12 -->
 
             <div class="col-md-12">
-                @if (Session::has('message'))
+                @if (Session::has('role_message'))
                 <div class="alert alert-success" role="alert">
-                    {{Session::get('message')}}!
+                    {{Session::get('role_message')}}!
                 </div>
                 @endif
                 <!-- jquery validation -->
@@ -81,12 +88,12 @@
             <!-- start col-md-12 -->
             <div class="col-md-12">
                 @if (Session::has('message'))
-                <div class="alert alert-success" role="alert">
+                <div class="alert alert-success" permission="alert">
                     {{Session::get('message')}}!
                   </div>
                 @endif
                 <!-- jquery validation -->
-                <div class="card card-primary">
+                <div class="card card-warning">
                   <div class="card-header">
                     <h3 class="card-title">ნებართვის მინიჭება</h3>
                   </div>

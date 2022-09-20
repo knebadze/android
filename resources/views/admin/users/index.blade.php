@@ -66,8 +66,8 @@
                             <td>{{$user->email}}</td>
                             <td>
                                 <div class="flex flex-d">
-                                <a href="" class="edit p-1 text-white bg-success rounded mr-2"> <i class="nav-icon fas fa-pen"></i>Roles</a>
-                                <a href="" class="edit p-1 text-white bg-success rounded"> <i class="nav-icon fas fa-pen"></i>Permissions</a>
+                                <a href="{{route('admin.users.show', $user->id)}}" class="edit p-1 text-white bg-success rounded mr-2"> <i class="nav-icon fas fa-pen"></i>Roles</a>
+                                {{-- <a href="" class="edit p-1 text-white bg-success rounded"> <i class="nav-icon fas fa-pen"></i>Permissions</a> --}}
                                 <form class="ml-1" method="POST" action="{{route('admin.users.destroy', $user->id)}}"
                                     onsubmit="return confirm('ნამდვილად გსურთ წაშლა');">
                                     @csrf
