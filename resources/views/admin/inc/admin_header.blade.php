@@ -224,7 +224,7 @@
               </p>
             </a>
           </li>
-          <li class="nav-item">
+          {{-- <li class="nav-item">
             <a href="pages/widgets.html" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
@@ -741,7 +741,7 @@
               <i class="nav-icon fas fa-file"></i>
               <p>Documentation</p>
             </a>
-          </li>
+          </li> --}}
           <li class="nav-header">MULTI LEVEL EXAMPLE</li>
           <li class="nav-item">
             {{-- <a href="route('logout')" class="nav-link"> --}}

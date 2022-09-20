@@ -47,7 +47,7 @@
     </head>
     <body class="hold-transition sidebar-mini layout-fixed">
         <div class="wrapper">
-            @include('inc.admin_header')
+            @include('admin.inc.admin_header')
              <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <main>
@@ -55,9 +55,9 @@
             </main>
         </div>
         <!-- /.content-wrapper -->
-            @include('inc.admin_footer')
-            @include('inc.role_create_modal')
-            @include('inc.permission_create_modal')
+            @include('admin.inc.admin_footer')
+            @include('admin.inc.role_create_modal')
+            @include('admin.inc.permission_create_modal')
 
 
 
