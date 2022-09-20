@@ -26,11 +26,8 @@ Route::get('/', function () {
 
 
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth'])->name('dashboard');
 
-Route::get('/dashboard', function () {
+Route::get('/admin/index', function () {
     return view('admin/index');
 })->middleware(['auth', 'role:admin'])->name('dashboard');
 
@@ -56,12 +53,9 @@ Route::middleware(['auth', 'role:admin'])->name('admin.')->prefix('admin')->grou
     // Route::post('/store')
 });
 
-// Route::get('/dashboard', function () {
-//     return view('observer/index');
-// })->middleware(['auth', 'role:observer'])->name('dashboard');
 
-Route::middleware(['auth', 'role:observer'])->name('observer.')->prefix('observer')->group(function(){
-    Route::get('/',[PageController::class, 'index'])->name('index');
+Route::middleware(['auth', 'role:observer'])->group(function(){
+    Route::get('observer/index',[PageController::class, 'index'])->name('observer.index');
 });
 
 require __DIR__.'/auth.php';

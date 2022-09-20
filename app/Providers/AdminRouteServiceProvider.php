@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\Route;
 
-class RouteServiceProvider extends ServiceProvider
+class AdminRouteServiceProvider extends ServiceProvider
 {
     /**
      * The path to the "home" route for your application.
@@ -19,7 +19,7 @@ class RouteServiceProvider extends ServiceProvider
      */
 
 
-    public const HOME = '/dashboard';
+    public const ADMIN = '/admin/index';
 
     /**
      * Define your route model bindings, pattern filters, and other route configuration.
@@ -52,3 +52,4 @@ class RouteServiceProvider extends ServiceProvider
         });
     }
 }
+
