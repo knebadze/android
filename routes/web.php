@@ -1,11 +1,13 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\RoleController;
-use App\Http\Controllers\Admin\IndexController;
-use App\Http\Controllers\Admin\PermissionController;
-use App\Http\Controllers\Admin\UserController;
 use Spatie\Permission\Contracts\Role;
+use App\Http\Controllers\Admin\RoleController;
+use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\IndexController;
+use App\Http\Controllers\Observer\PageController;
+use App\Http\Controllers\Admin\PermissionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,9 +24,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth'])->name('dashboard');
+
 Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+    return view('admin/index');
+})->middleware(['auth', 'role:admin'])->name('dashboard');
+
+
 
 Route::middleware(['auth', 'role:admin'])->name('admin.')->prefix('admin')->group(function(){
     Route::get('/',[IndexController::class, 'index'])->name('index');
@@ -44,6 +54,14 @@ Route::middleware(['auth', 'role:admin'])->name('admin.')->prefix('admin')->grou
     Route::post('/users/{user}/permissions', [UserController::class, 'givePermission'])->name('users.permissions');
     Route::delete('/users/{user}/permissions/{permission}', [UserController::class, 'RevokePermission'])->name('users.permissions.revoke');
     // Route::post('/store')
+});
+
+// Route::get('/dashboard', function () {
+//     return view('observer/index');
+// })->middleware(['auth', 'role:observer'])->name('dashboard');
+
+Route::middleware(['auth', 'role:observer'])->name('observer.')->prefix('observer')->group(function(){
+    Route::get('/',[PageController::class, 'index'])->name('index');
 });
 
 require __DIR__.'/auth.php';
