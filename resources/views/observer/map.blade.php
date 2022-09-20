@@ -92,4 +92,21 @@
     </section>
     <!-- /.content -->
 
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBffrJkI4UIM_OjTA7WDE_gSGVFmq8sFm4&callback=initMap"></script>
+
+<script>
+    let map;
+    // Initialize and add the map
+function initMap() {
+
+
+    map = new google.maps.Map(document.getElementById("map"), {
+    zoom: 7,
+    center: { lat: 41.7151, lng: 44.8271 },
+  });
+}
+
+window.initMap = initMap;
+</script>
+
 </x-Observer-layout>
