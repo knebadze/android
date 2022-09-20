@@ -18,16 +18,16 @@
 </section>
 
          <!-- Main content -->
-    <section class="content">
+<section class="content">
         <div class="container-fluid">
-          <div class="row">
+            <div class="row">
             <!-- left column -->
             <div class="col-md-12">
                 <div>იუზერის სახელი: {{$user->name}}</div>
                 <div>იუზერის ემაილ: {{$user->email}}</div>
               <!-- /.card -->
-            </div>
-            <!--/.col (left) -->
+            </div><!--/col-md-12 -->
+            
             <!-- right column -->
             <div class="col-md-12">
                 @if (Session::has('message'))
@@ -52,10 +52,10 @@
                         @endforeach
 
                     @endif
-                  </div>
-                  <!-- /.card-header -->
-                  <!-- form start -->
-                      <form id="quickForm" method="POST" action="{{route('admin.roles.permissions',$role)}}">
+                </div><!-- /.card-header -->
+
+                    <!-- form start -->
+                    <form id="quickForm" method="POST" action="{{route('admin.roles.permissions',$role)}}">
                           @csrf
                     <div class="card-body">
                       <div class="form-group">
@@ -67,16 +67,13 @@
                             @endforeach
                         </select>
                       </div>
-                    </div>
-                    <!-- /.card-body -->
+                    </div><!-- /.card-body -->
                     <div class="card-footer">
                       <button type="submit" class="btn btn-primary">შენახვა</button>
                     </div>
-                  </form>
-                </div>
-                <!-- /.card -->
-            </div>
-              <!--/.col (left) -->
+                    </form>
+                </div><!-- /.card -->
+            </div><!--/.col-md-12 -->
 
             <div class="col-md-12">
                 @if (Session::has('message'))
@@ -86,10 +83,10 @@
                 @endif
                 <!-- jquery validation -->
                 <div class="card card-primary">
-                  <div class="card-header">
-                    <h3 class="card-title">როლის მინიჭება</h3>
-                  </div>
-                  <div class="mt-4 ml-3 flex flex-d">
+                    <div class="card-header">
+                        <h3 class="card-title">როლის მინიჭება</h3>
+                    </div>
+                    <div class="mt-4 ml-3 flex flex-d">
                     @if ($permission->roles)
                         @foreach ($permission->roles as $permission_role)
                             <form class="ml-1" method="POST" action="{{route('admin.permissions.roles.remove', [$permission->id, $permission_role->id])}}"
@@ -101,10 +98,10 @@
                         @endforeach
 
                     @endif
-                  </div>
-                  <!-- /.card-header -->
-                  <!-- form start -->
-                      <form id="quickForm" method="POST" action="{{route('admin.permissions.role',$permission->id)}}">
+                    </div>
+                    <!-- /.card-header -->
+                    <!-- form start -->
+                    <form id="quickForm" method="POST" action="{{route('admin.permissions.role',$permission->id)}}">
                           @csrf
                     <div class="card-body">
                       <div class="form-group">
@@ -119,17 +116,15 @@
                     </div>
                     <!-- /.card-body -->
                     <div class="card-footer">
-                      <button type="submit" class="btn btn-primary">შენახვა</button>
+                        <button type="submit" class="btn btn-primary">შენახვა</button>
                     </div>
-                  </form>
-                </div>
-                <!-- /.card -->
-            </div>
+                    </form>
+                </div><!-- /.card -->
+            </div><!-- /.col-md-12-->
 
-            </div>
-          <!-- /.row -->
-        </div><!-- /.container-fluid -->
-    </section>
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</section>
       <!-- /.content -->
 
 </x-admin-layout>
