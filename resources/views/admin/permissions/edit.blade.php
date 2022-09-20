@@ -63,16 +63,16 @@
                 <!-- jquery validation -->
                 <div class="card card-primary">
                   <div class="card-header">
-                    <h3 class="card-title">ნებართვის მინიჭება</h3>
+                    <h3 class="card-title">როლის მინიჭება</h3>
                   </div>
                   <div class="mt-4 ml-3 flex flex-d">
-                    @if ($role->permissions)
-                        @foreach ($role->permissions as $role_permission)
-                            <form class="ml-1" method="POST" action="{{route('admin.roles.permissions.revoke', [$role->id, $role_permission->id])}}"
+                    @if ($permission->roles)
+                        @foreach ($permission->roles as $permission_role)
+                            <form class="ml-1" method="POST" action="{{route('admin.permissions.roles.remove', [$permission->id, $permission_role->id])}}"
                                 onsubmit="return confirm('ნამდვილად გსურთ წაშლა');">
                                 @csrf
                                 @method('DELETE')
-                                <button class="p-2 bg-info text-white ml-2 rounded" type="submit"><i class="nav-icon fas fa-trash"></i> {{$role_permission->name}}</button>
+                                <button class="p-2 bg-info text-white ml-2 rounded" type="submit"><i class="nav-icon fas fa-trash"></i> {{$permission_role->name}}</button>
                             </form>
                         @endforeach
 
@@ -80,15 +80,15 @@
                   </div>
                   <!-- /.card-header -->
                   <!-- form start -->
-                      <form id="quickForm" method="POST" action="{{route('admin.roles.permissions',$role)}}">
+                      <form id="quickForm" method="POST" action="{{route('admin.permissions.role',$permission->id)}}">
                           @csrf
                     <div class="card-body">
                       <div class="form-group">
-                        <label for="name">ნებართვა</label>
-                        <select class="form-control" name="permission" id="">
-                            <option value="">აირჩიე ნებართვა</option>
-                            @foreach ($permissions as $permission)
-                            <option value="{{$permission->name}}">{{$permission->name}}</option>
+                        <label for="name">როლები</label>
+                        <select class="form-control" name="role" id="">
+                            <option value="">აირჩიე როლი</option>
+                            @foreach ($roles as $role)
+                            <option value="{{$role->name}}">{{$role->name}}</option>
                             @endforeach
                         </select>
                       </div>

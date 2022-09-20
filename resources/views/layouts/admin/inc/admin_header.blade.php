@@ -224,6 +224,22 @@
               </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="{{route('admin.users.index')}}" class="nav-link">
+              <i class="nav-icon fas fa-user"></i>
+              <p>
+                Users
+              </p>
+            </a>
+          </li>
+          {{-- <li class="nav-item">
+            <x-responsive-nav-link :href="{{route('admin.users.index')}}" :active="request()->routeIs('admin.users.indexd')">
+                <i class="nav-icon fas fa-user"></i>
+              <p>
+                {{ __('Users') }}
+              </p>
+            </x-responsive-nav-link>
+          </li> --}}
           {{-- <li class="nav-item">
             <a href="pages/widgets.html" class="nav-link">
               <i class="nav-icon fas fa-th"></i>

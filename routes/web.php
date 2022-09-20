@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\IndexController;
 use App\Http\Controllers\Admin\PermissionController;
+use App\Http\Controllers\Admin\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +32,11 @@ Route::middleware(['auth', 'role:admin'])->name('admin.')->prefix('admin')->grou
     Route::delete('/roles/{role}/permissions/{permission}',[RoleController::class, 'revokePermission'])->name('roles.permissions.revoke');
 
     Route::resource('/permissions', PermissionController::class);
+    Route::post('/permission/{permission}/roles', [PermissionController::class, 'assignRole'])->name('permissions.role');
+    Route::delete('/permission/{permission}/roles/{role}', [PermissionController::class, 'removeRole'])->name('permissions.roles.remove');
+
+    Route::get('/users',[UserController::class, 'index'])->name('users.index');
+    Route::delete('/users/{user}',[UserController::class, 'destroy'])->name('users.destroy');
     // Route::post('/store')
 });
 
