@@ -23,16 +23,16 @@
   <link rel="stylesheet" href="{{asset('plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css')}}">
   <!-- iCheck -->
   <link rel="stylesheet" href="{{asset('plugins/icheck-bootstrap/icheck-bootstrap.min.css')}}">
-  <!-- JQVMap -->
-  <link rel="stylesheet" href="{{asset('plugins/jqvmap/jqvmap.min.css')}}">
+  {{-- <!-- JQVMap -->
+  <link rel="stylesheet" href="{{asset('plugins/jqvmap/jqvmap.min.css')}}"> --}}
   <!-- Theme style -->
-  <link rel="stylesheet" href="{{asset('dist/css/adminlte.min.css')}}">
-  <!-- overlayScrollbars -->
+  <link rel="stylesheet" href="{{asset('dist/css/adminlte.css')}}">
+  {{-- <!-- overlayScrollbars -->
   <link rel="stylesheet" href="{{asset('plugins/overlayScrollbars/css/OverlayScrollbars.min.css')}}">
   <!-- Daterange picker -->
   <link rel="stylesheet" href="{{asset('plugins/daterangepicker/daterangepicker.css')}}">
   <!-- summernote -->
-  <link rel="stylesheet" href="{{asset('plugins/summernote/summernote-bs4.min.css')}}">
+  <link rel="stylesheet" href="{{asset('plugins/summernote/summernote-bs4.min.css')}}"> --}}
 
   <style>
    td .edit{
@@ -59,18 +59,21 @@
 
 
 
+
 <!-- jQuery -->
 <script src="{{asset('plugins/jquery/jquery.min.js')}}"></script>
 <!-- Bootstrap 4 -->
 <script src="{{asset('plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 <!-- SweetAlert2 -->
-<script src="{{asset('plugins/sweetalert2/sweetalert2.min.js')}}"></script>
+{{-- <script src="{{asset('plugins/sweetalert2/sweetalert2.min.js')}}"></script>
 <!-- Toastr -->
-<script src="{{asset('plugins/toastr/toastr.min.js')}}"></script>
+<script src="{{asset('plugins/toastr/toastr.min.js')}}"></script> --}}
 <!-- AdminLTE App -->
 <script src="{{asset('dist/js/adminlte.min.js')}}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{asset('dist/js/demo.js')}}"></script>
+
+
 
         {{-- <!-- jQuery -->
 <script src="plugins/jquery/jquery.min.js"></script>

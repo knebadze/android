@@ -40030,7 +40030,7 @@ select.form-control-sm ~ .select2-container--default .select2-selection--multipl
   border-color: #343a40;
 }
 
-.mapael .map {
+/* .mapael .map {
   position: relative;
 }
 
@@ -40126,7 +40126,7 @@ select.form-control-sm ~ .select2-container--default .select2-selection--multipl
   background-color: #e9ecef;
   color: #2b2b2b;
 }
-
+*/
 .swal2-icon.swal2-info {
   border-color: ligthen(#17a2b8, 20%);
   color: #17a2b8;
