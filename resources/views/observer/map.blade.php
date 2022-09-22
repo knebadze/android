@@ -79,6 +79,16 @@
                 { lat: 41.719395, lng: 44.794200 },
                 { lat: 41.726373, lng: 44.793747 },
             ],
+            [
+                { lat: 41.729129, lng: 44.749612 },
+                { lat: 41.726247, lng: 44.753389 },
+                { lat: 41.724645, lng: 44.750556 },
+                { lat: 41.721250, lng: 44.756822 },
+                { lat: 41.720994, lng: 44.760856 },
+                { lat: 41.722275, lng: 44.769954 },
+                { lat: 41.727656, lng: 44.772701 },
+                { lat: 41.730987, lng: 44.766864 },
+            ],
         ];
 
         setTimeout(() => {
@@ -92,7 +102,7 @@
             strokeOpacity: 0.8,
             strokeWeight: 3,
             fillColor: "810FCB",
-            fillOpacity: 0.35,
+            fillOpacity: 0.1,
         }));
         bermudaTriangle[bermudaTriangle.length-1].setMap(map);
         // Add a listener for the click event.
