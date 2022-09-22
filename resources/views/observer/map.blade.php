@@ -40,65 +40,134 @@
     <!-- /.content -->
 
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBffrJkI4UIM_OjTA7WDE_gSGVFmq8sFm4&callback=initMap"></script>
+    {{-- <script src="https://unpkg.com/@googlemaps/markerclusterer/dist/index.min.js"></script> --}}
 
-    <script>
-        // Initialize and add the map
-        var map;
-var infoWindow;
-function initMap() {
-    map = new google.maps.Map(document.getElementById("map"), {
-        zoom: 10,
-        center: { lat: 41.7151, lng: 44.8271 },
-        mapTypeId: "roadmap",
-    });
-    // Define the LatLng coordinates for the polygon.
-    var triangleCoords = [
-        { lat: 41.745577, lng: 44.792170 },
-        { lat: 41.737956, lng: 44.816203 },
-        { lat: 41.727900, lng: 44.800410 },
-        { lat: 41.732640, lng: 44.785647 },
-    ];
-    // Construct the polygon.
-    var bermudaTriangle = new google.maps.Polygon({
-        paths: triangleCoords,
-        strokeColor: "#FF0000",
-        strokeOpacity: 0.8,
-        strokeWeight: 3,
-        fillColor: "#FF0000",
-        fillOpacity: 0.35,
-    });
-    bermudaTriangle.setMap(map);
-    // Add a listener for the click event.
-    bermudaTriangle.addListener("click", showArrays);
-    infoWindow = new google.maps.InfoWindow();
-}
-function showArrays(event) {
-    // Since this polygon has only one path, we can call getPath() to return the
-    // MVCArray of LatLngs.
-    // @ts-ignore
-    var polygon = this;
-    var vertices = polygon.getPath();
-    var contentString = "<b>ნაძალადევის მიმდებარე ტერიტორია</b><br>" +
-        "Clicked location: <br>" +
-        event.latLng.lat() +
-        "," +
-        event.latLng.lng() +
-        "<br>";
-    // Iterate over the vertices.
-    for (var i = 0; i < vertices.getLength(); i++) {
-        var xy = vertices.getAt(i);
-        contentString +=
-            "<br>" + "Coordinate " + i + ":<br>" + xy.lat() + "," + xy.lng();
+<script>
+    var marker, i;
+    var locations = [
+        ['მეტრო ნაძალადევი', 41.732032, 44.797663, 4],
+        ['სკოლა', 41.737594, 44.795850, 5],
+        ['ლოტინის პარკი', 41.739132, 44.805432, 3],
+        ['სპარი', 41.729853, 44.808796, 2],
+        ['Maroubra Beach', 41.731561, 44.802580, 1]
+        ];
+            // Initialize and add the map
+    var map;
+    var infoWindow;
+
+    function initMap() {
+        map = new google.maps.Map(document.getElementById("map"), {
+            zoom: 12,
+            center: { lat: 41.7151, lng: 44.8271 },
+            mapTypeId: "roadmap",
+        });
+        // Define the LatLng coordinates for the polygon.
+        var triangleCoords = [
+            { lat: 41.745577, lng: 44.792170 },
+            { lat: 41.737956, lng: 44.816203 },
+            { lat: 41.727900, lng: 44.800410 },
+            { lat: 41.732640, lng: 44.785647 },
+        ];
+        // Construct the polygon.
+        var bermudaTriangle = new google.maps.Polygon({
+            paths: triangleCoords,
+            strokeColor: "#810FCB",
+            strokeOpacity: 0.8,
+            strokeWeight: 3,
+            fillColor: "810FCB",
+            fillOpacity: 0.35,
+        });
+        bermudaTriangle.setMap(map);
+        // Add a listener for the click event.
+        bermudaTriangle.addListener("click", showArrays);
+        infoWindow = new google.maps.InfoWindow();
+
+        //MARKERS
+        var markerInfowindow = new google.maps.InfoWindow();
+
+        for (i = 0; i < locations.length; i++) {
+            marker = new google.maps.Marker({
+                position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+                map: map
+            });
+            google.maps.event.addListener(marker, 'click', (function(marker, i) {
+            return function() {
+                markerInfowindow.setContent(locations[i][0]);
+                markerInfowindow.open(map, marker);
+            }
+          })(marker, i));
+        }
     }
-    // Replace the info window's content and position.
-    infoWindow.setContent(contentString);
-    infoWindow.setPosition(event.latLng);
-    infoWindow.open(map);
+
+
+    function showArrays(event) {
+        // Since this polygon has only one path, we can call getPath() to return the
+        // MVCArray of LatLngs.
+        // @ts-ignore
+        var polygon = this;
+        var vertices = polygon.getPath();
+        var contentString = "<b>ნაძალადევის მიმდებარე ტერიტორია</b><br>" +
+            "Clicked location: <br>" +
+            event.latLng.lat() +
+            "," +
+            event.latLng.lng() +
+            "<br>";
+        // map.setZoom(13);
+        // map.setCenter(bermudaTriangle.getPosition());
+        // Iterate over the vertices.
+        for (var i = 0; i < vertices.getLength(); i++) {
+            var xy = vertices.getAt(i);
+            contentString +=
+                "<br>" + "Coordinate " + i + ":<br>" + xy.lat() + "," + xy.lng();
+        }
+        // Replace the info window's content and position.
+        infoWindow.setContent(contentString);
+        infoWindow.setPosition(event.latLng);
+        infoWindow.open(map);
+    }
+    window.initMap = initMap;
+
+
+
+</script>
+
+
+{{-- <script>
+        var locations = [
+      ['Bondi Beach', -33.890542, 151.274856, 4],
+      ['Coogee Beach', -33.923036, 151.259052, 5],
+      ['Cronulla Beach', -34.028249, 151.157507, 3],
+      ['Manly Beach', -33.80010128657071, 151.28747820854187, 2],
+      ['Maroubra Beach', -33.950198, 151.259302, 1]
+    ];
+    // Initialize and add the map
+function initMap() {
+  // The location of Uluru
+  const uluru = { lat: -25.344, lng: 131.031 };
+  // The map, centered at Uluru
+  const map = new google.maps.Map(document.getElementById("map"), {
+    zoom: 4,
+    center: uluru,
+  });
+  var infowindow = new google.maps.InfoWindow();
+
+    var marker, i;
+
+    for (i = 0; i < locations.length; i++) {
+      marker = new google.maps.Marker({
+        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+        map: map
+      });
+
+        //   google.maps.event.addListener(marker, 'click', (function(marker, i) {
+        //     // return function() {
+        //     //   infowindow.setContent(locations[i][0]);
+        //     //   infowindow.open(map, marker);
+        //     // }
+        //   })(marker, i));
 }
+}
+
 window.initMap = initMap;
-
-
-
-    </script>
-
+</script> --}}
 </x-Observer-layout>
