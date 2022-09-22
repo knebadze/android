@@ -93,7 +93,6 @@
 
         setTimeout(() => {
             map.setZoom(13);
-            map.setCenter(bermudaTriangle.getPosition());
         }, 1000);
         // Construct the polygon.
         bermudaTriangle.push(new google.maps.Polygon({
@@ -134,6 +133,7 @@
         // @ts-ignore
         var polygon = this;
         var vertices = polygon.getPath();
+        console.log(vertices );
         var contentString = "<b>ნაძალადევის მიმდებარე ტერიტორია</b><br>" +
             "Clicked location: <br>" +
             event.latLng.lat() +
