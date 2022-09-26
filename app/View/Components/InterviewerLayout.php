@@ -4,7 +4,7 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class InterviewerLayouts extends Component
+class InterviewerLayout extends Component
 {
     /**
      * Get the view / contents that represents the component.
