@@ -39,8 +39,10 @@ class AuthenticatedSessionController extends Controller
             return redirect()->intended(AdminRouteServiceProvider::ADMIN);
         }elseif(Auth::user()->hasRole('observer')){
             return redirect()->intended(ObserverRouteServiceProvider::OBSERVER);
-        }else{
+        }elseif(Auth::user()->hasRole('interviewer')){
             return redirect()->intended(InterviewerRouteServiceProvider::INTERVIEWER);
+        }else{
+            abort(500, 'გთხოვთ დაელოდოთ ადმინი მოგანიჭებთ როლს');
         }
     }
 
