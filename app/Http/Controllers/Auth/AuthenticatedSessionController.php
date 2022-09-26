@@ -9,6 +9,7 @@ use App\Providers\RouteServiceProvider;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Providers\AdminRouteServiceProvider;
 use App\Providers\ObserverRouteServiceProvider;
+use App\Providers\InterviewerRouteServiceProvider;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -36,8 +37,10 @@ class AuthenticatedSessionController extends Controller
 
         if(Auth::user()->hasRole('admin')){
             return redirect()->intended(AdminRouteServiceProvider::ADMIN);
-        }else{
+        }elseif(Auth::user()->hasRole('observer')){
             return redirect()->intended(ObserverRouteServiceProvider::OBSERVER);
+        }else{
+            return redirect()->intended(InterviewerRouteServiceProvider::INTERVIEWER);
         }
     }
 

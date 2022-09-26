@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\IndexController;
 use App\Http\Controllers\Observer\PageController;
 use App\Http\Controllers\Admin\PermissionController;
+use App\Http\Controllers\Interviewer\InterviewerPageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -58,6 +59,12 @@ Route::middleware(['auth', 'role:observer'])->group(function(){
     Route::get('observer/index',[PageController::class, 'index'])->name('observer.index');
     Route::get('observer/map',[PageController::class, 'map'])->name('observer.map');
 });
+
+Route::middleware(['auth', 'role:interviewer'])->group(function(){
+    Route::get('interviewer/index',[InterviewerPageController::class, 'index'])->name('interviewer.index');
+    // Route::get('observer/map',[PageController::class, 'map'])->name('observer.map');
+});
+
 
 
 require __DIR__.'/auth.php';

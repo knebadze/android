@@ -47,7 +47,7 @@
     </head>
     <body class="hold-transition sidebar-mini layout-fixed">
         <div class="wrapper">
-            @include('layouts.observer.inc.observer_header')
+            @include('layouts.interviewer.inc.interviewer_header')
              <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <main>
